@@ -4,13 +4,13 @@
 #RUN podman login --tls-verify=false -u unused -p $(oc whoami -t) ${REGISTRY}
 #RUN podman build -t ${REGISTRY}/demo .
 
-REGISTRY ?= default-route-openshift-image-registry.apps-crc.testing/openshift
-APPLICATION_NAME ?= demo
-GIT_HASH=$(git rev-parse --short=7 HEAD)
+REGISTRY=default-route-openshift-image-registry.apps-crc.testing/openshift
+APPLICATION_NAME=demo
+GIT_HASH=$(shell git rev-parse --short=7 HEAD)
 
 build:
-	podman build -t ${REGISTRY}/${APPLICATION_NAME}:${GIT_HASH} .
+	podman build --tag ${REGISTRY}/${APPLICATION_NAME}:${GIT_HASH} .
 
 push:
-	docker push --tls-verify=false ${REGISTRY}/${APPLICATION_NAME}:${GIT_HASH}
+	podman push --tls-verify=false ${REGISTRY}/${APPLICATION_NAME}:${GIT_HASH}
 
