@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 #RUN REGISTRY="$(oc get route/default-route -n openshift-image-registry -o=jsonpath='{.spec.host}')/openshift"
-#RUN podman login --tls-verify=false -u unused -p $(oc whoami -t) ${REGISTRY}
+RUN podman login --tls-verify=false -u unused -p $(oc whoami -t) ${REGISTRY}
 #RUN podman build -t ${REGISTRY}/demo .
 
 REGISTRY=default-route-openshift-image-registry.apps-crc.testing/openshift
