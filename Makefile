@@ -13,5 +13,6 @@ build:
 	podman build --tag ${REGISTRY}/${APPLICATION_NAME}:${GIT_HASH} .
 
 push:
+	podman login --tls-verify=false -u unused -p $(oc whoami -t) ${REGISTRY}
 	podman push --tls-verify=false ${REGISTRY}/${APPLICATION_NAME}:${GIT_HASH}
 
