@@ -11,6 +11,9 @@ COPY static/ /app/static
 COPY requirements.txt /app
 COPY app.py /app
 
+# expose port
+EXPOSE 5000
+
 # start flask
 RUN pip3 install -r ./requirements.txt
 RUN export FLASK_APP=app
