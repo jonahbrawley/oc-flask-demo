@@ -16,6 +16,8 @@ EXPOSE 5000
 
 # start flask
 RUN pip3 install -r ./requirements.txt
-RUN export FLASK_APP=app
-RUN export FLASK_ENV=development
-CMD ["flask", "run"]
+#RUN export FLASK_APP=app
+#RUN export FLASK_ENV=development
+#CMD ["flask", "run"]
+ENTRYPOINT [ "python" ]
+CMD [ "app.py" ]
