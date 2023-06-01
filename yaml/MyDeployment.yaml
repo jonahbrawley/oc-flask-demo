@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+ labels:
+   app: demo
+# uncomment if needed
+#   app.kubernetes.io/component: demo
+#   app.kubernetes.io/instance: demo
+ name: demo
+ namespace: flask-demo
+spec:
+ replicas: 2
+ selector:
+   matchLabels:
+     deployment: demo
+ template:
+   metadata:
+     labels:
+       deployment: demo
+   spec:
+     containers:
+       - image: default-route-openshift-image-registry.apps-crc.testing/openshift/demo@sha256:ee1c3bb871dbb0a8c23cc6b069c0445a303714c5cc2ccfb5a385be924ff75325
+         imagePullPolicy: Always
+         name: demo
+         ports:
+           - containerPort: 5000
