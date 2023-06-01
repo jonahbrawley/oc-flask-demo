@@ -19,7 +19,7 @@ spec:
        deployment: demo
    spec:
      containers:
-       - image: quay.io/rh-ee-jbrawley/flask-demo:3ed1e2b
+       - image: quay.io/rh-ee-jbrawley/flask-demo:d1a954e
          imagePullPolicy: Always
          name: demo
          ports:
