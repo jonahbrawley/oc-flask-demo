@@ -19,7 +19,7 @@ spec:
        deployment: demo
    spec:
      containers:
-       - image: default-route-openshift-image-registry.apps-crc.testing/openshift/demo@sha256:ee1c3bb871dbb0a8c23cc6b069c0445a303714c5cc2ccfb5a385be924ff75325
+       - image: quay.io/repository/rh-ee-jbrawley/flask-demo:3ed1e2b
          imagePullPolicy: Always
          name: demo
          ports:
