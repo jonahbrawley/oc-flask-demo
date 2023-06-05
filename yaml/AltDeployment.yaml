@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+ labels:
+   app: demo
+# uncomment if needed
+#   app.kubernetes.io/component: demo
+#   app.kubernetes.io/instance: demo
+ name: demo
+ namespace: flask-alt
+spec:
+ replicas: 2
+ selector:
+   matchLabels:
+     deployment: demo
+ template:
+   metadata:
+     labels:
+       deployment: demo
+   spec:
+     containers:
+       - image: quay.io/rh-ee-jbrawley/flask-demo:d1a954e
+         imagePullPolicy: IfNotPresent
+         name: demo
+         ports:
+           - containerPort: 5000
