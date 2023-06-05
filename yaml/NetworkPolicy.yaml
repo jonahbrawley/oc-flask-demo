@@ -1,0 +1,16 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: test-network-policy
+  namespace: flask-demo # apply in original namespace
+spec:
+  podSelector:
+    matchLabels:
+      project: flask-demo # affect all pods in flask-demo
+  policyTypes:
+    - Ingress
+  ingress:
+    - from:
+        - namespaceSelector:
+            matchLabels:
+              project: flask-alt # allow ingress from flask-alt only
