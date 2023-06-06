@@ -4,13 +4,10 @@ metadata:
   name: test-network-policy
   namespace: flask-demo # apply in original namespace
 spec:
+  policyTypes:
+  - Ingress
   podSelector:
     matchLabels:
-      project: flask-demo # affect all pods in flask-demo
-  policyTypes:
-    - Ingress
+      project: flask-alt # affect pods in flask-alt
   ingress:
-    - from:
-        - namespaceSelector:
-            matchLabels:
-              project: flask-alt # allow ingress from flask-alt only
+  - {}
