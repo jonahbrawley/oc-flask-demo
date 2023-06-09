@@ -6,6 +6,7 @@ import (
 	"net/http"
 	"os"
 	"time"
+	// "database/sql" // sql connection
 )
 
 type api struct {
@@ -21,7 +22,7 @@ const (
 
 func main() {
 	a := initApi()
-	http.HandleFunc("/name", sendName)
+	http.HandleFunc("/name", sendName) // send name here
 	port, set := os.LookupEnv(PORT)
 	if !set {
 		port = "8080"
@@ -47,4 +48,10 @@ func initApi() *api {
 
 func sendName(w http.ResponseWriter, r *http.Request) {
 	log.Println("Sending name...")
+	fmt.Println("GET params were:", r.URL.Query())
+	/*db, err := sql.Open("mysql", "root:password@tcp(10.217.4.218:8089)/names")
+	if err != nil {
+		log.Fatal(err)
+	}
+	rows, err := db.Query(fmt.Sprintf("INSERT INTO names(name) VALUES %s", ))*/
 }
