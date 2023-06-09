@@ -11,6 +11,7 @@ import (
 type api struct {
 	provider string
 	httpClient *http.Client
+	alertHandler http.HandleFunc // added
 }
 
 const (
@@ -20,11 +21,12 @@ const (
 
 func Main() {
 	a := initApi()
-	http.HandleFunc("/name", sendName)
+	http.HandleFunc("/name", a.sendName)
 	port, set := os.LookupEnv(PORT)
 	if !set {
 		port = "8080"
 	}
+	//log.Println("test")
 	log.Println(fmt.Sprintf("Listening on port: %s", port))
 	log.Println(fmt.Sprintf("Configured for: %s", a.provider))
 
@@ -39,5 +41,10 @@ func initApi() *api {
 	return &api{
 		provider: provider,
 		httpClient: &httpClient{Timeout: time.Second * 5},
+		alertHandler: sendName,
 	}
+}
+
+func (a *api) sendName(w http.ResponseWriter, r *http.Request) {
+	log.Println("Sending name...")
 }
