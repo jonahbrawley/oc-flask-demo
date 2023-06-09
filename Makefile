@@ -7,7 +7,7 @@
 REGISTRY=default-route-openshift-image-registry.apps-crc.testing/openshift
 APPLICATION_NAME=demo
 GIT_HASH=$(shell git rev-parse --short=7 HEAD)
-podman login --tls-verify=false -u unused -p $(oc whoami -t) ${REGISTRY}
+#podman login --tls-verify=false -u unused -p $(oc whoami -t) ${REGISTRY}
 
 build:
 	#podman login --tls-verify=false -u unused -p $(oc whoami -t) ${REGISTRY}
