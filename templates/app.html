@@ -1,5 +1,12 @@
 <!DOCTYPE html>
 <html>
 	<head><link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/app.css') }}"/></head>
-	<body><div class="wrapper"><p>Welcome to my awesome app!</p></div></body>
+	<body>
+		<div class="wrapper"><p>Welcome to my awesome app!</p></div>
+		<form>
+			<label for="name">Name:</label>
+			<input type="text" id="name" name="name" placeholder="Hank">
+			<input type="submit" value="Submit">
+		</form>
+	</body>
 </html>
