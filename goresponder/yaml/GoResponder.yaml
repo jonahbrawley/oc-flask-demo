@@ -21,7 +21,7 @@ spec:
        deployment: goresponder
    spec:
      containers:
-       - image: quay.io/rh-ee-jbrawley/goresponder:2adf15a
+       - image: quay.io/rh-ee-jbrawley/goresponder:e209513
          imagePullPolicy: IfNotPresent
          name: goresponder
          ports:
