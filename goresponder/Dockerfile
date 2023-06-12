@@ -1,5 +1,5 @@
 FROM scratch
 WORKDIR /app
-COPY /test-sql /app
+ADD . /app
 EXPOSE 8080
 CMD ["./test-sql"]
