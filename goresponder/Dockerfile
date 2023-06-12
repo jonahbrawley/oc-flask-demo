@@ -1,6 +1,6 @@
 FROM registry.access.redhat.com/ubi8/go-toolset:1.20.5
 COPY . .
-CMD ["go", "build", "server.go"]
+CMD ["go", "build", "-o", "server"]
 
 FROM registry.access.redhat.com/ubi8/ubi-minimal
 WORKDIR /app
