@@ -1,6 +1,8 @@
-FROM golang:1.20.5
+FROM registry.access.redhat.com/ubi8/ubi-minimal
 WORKDIR /app
-ADD test-sql /app
+COPY go.mod /app
+COPY go.sum /app
+COPY test-sql /app
 EXPOSE 8080
 CMD ["./test-sql"]
 #CMD ["ls"]
