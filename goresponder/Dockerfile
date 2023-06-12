@@ -1,10 +1,14 @@
-FROM registry.access.redhat.com/ubi8/ubi
+FROM registry.access.redhat.com/ubi8/go-toolset:1.20.5
+COPY . .
+CMD ["go", "build", "server.go"]
+
+FROM registry.access.redhat.com/ubi8/ubi-minimal
 WORKDIR /app
 COPY go.mod /app
 COPY go.sum /app
 COPY test-sql /app
 EXPOSE 8080
 #CMD ["dnf", "install", "mysql-community-server"]
-CMD ["dnf", "install", "libc.so.6"]
+#CMD ["dnf", "install", "libc.so.6"]
 CMD ["./test-sql"]
 #CMD ["ls"]
