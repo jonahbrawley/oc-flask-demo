@@ -6,7 +6,8 @@ import (
 	"net/http"
 	"os"
 	"time"
-	// "database/sql" // sql connection
+	"database/sql" // sql connection
+	_ "github.com/go-sql-driver/mysql" // mysql driver
 )
 
 type api struct {
@@ -22,7 +23,7 @@ const (
 
 func main() {
 	a := initApi()
-	http.HandleFunc("/name", sendName) // send name here
+	http.HandleFunc("/set", sendName) // send name here
 	port, set := os.LookupEnv(PORT)
 	if !set {
 		port = "8080"
@@ -49,9 +50,15 @@ func initApi() *api {
 func sendName(w http.ResponseWriter, r *http.Request) {
 	log.Println("Sending name...")
 	fmt.Println("GET params were:", r.URL.Query())
-	/*db, err := sql.Open("mysql", "root:password@tcp(10.217.4.218:8089)/names")
+	db, err := sql.Open("mysql", "root:password@tcp(http://mysql-f88f5d857-x4kfq-flask-datastore.apps-crc.testing:3306)/names")
 	if err != nil {
 		log.Fatal(err)
 	}
-	rows, err := db.Query(fmt.Sprintf("INSERT INTO names(name) VALUES %s", ))*/
+	log.Println("Sending name insert...")
+	log.Println("INSERT INTO names(name) VALUES " + r.URL.Query().Get("name"))
+	rows, err := db.Query("INSERT INTO names(name) VALUES " + r.URL.Query().Get("name"))
+	if err != nil {
+		log.Fatal(err)
+	}
+	log.Println(rows)
 }

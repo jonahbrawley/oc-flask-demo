@@ -2,11 +2,11 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
  labels:
-   app: demo
+   app: goresponder
 # uncomment if needed
 #   app.kubernetes.io/component: demo
 #   app.kubernetes.io/instance: demo
- name: demo
+ name: goresponder
  namespace: flask-demo
 spec:
  # securityContext:
@@ -14,18 +14,18 @@ spec:
  replicas: 2
  selector:
    matchLabels:
-     deployment: demo
+     deployment: goresponder
  template:
    metadata:
      labels:
-       deployment: demo
+       deployment: goresponder
    spec:
      containers:
        - image: quay.io/rh-ee-jbrawley/flask-demo:af53914
          imagePullPolicy: IfNotPresent
-         name: demo
+         name: goresponder
          ports:
-           - containerPort: 5000
+           - containerPort: 8080
          # fix pod security
          securityContext:
            allowPrivilegeEscalation: false
