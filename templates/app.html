@@ -20,15 +20,12 @@
 				window.alert("Sending name");
 
 				// Send the request to the locally hosted IP
-				var xhr = new XMLHttpRequest();
-				xhr.open("GET", url, true);
-				xhr.onload = function(e) {
-    				code = xhr.response;
-  				};
-  				xhr.onerror = function () {
-    				console.error("** An error occurred during the XMLHttpRequest");
-  				};
-				xhr.send();
+				fetch(url)
+					.then(
+						response => response.text()
+					).then(
+						text => console.log(text)
+					);
 			};
 		</script>
 	</body>
