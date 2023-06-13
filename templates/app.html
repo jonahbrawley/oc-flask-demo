@@ -2,15 +2,22 @@
 <html>
 	<head><link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/app.css') }}"/></head>
 	<body>
+		<div class="wrapper"><p>Welcome to my awesome app!</p>
+			<form id="myForm" onsubmit="return false;" method="post">
+			<label for="name">Name: </label>
+			<input type="text" id="textfield" name="name" placeholder="Hank">
+			<input type="submit" value="Submit" onclick="submitName()">
+			</form>
+		</div>
 		<script>
 			function submitName() {
-				e.preventDefault(); // Prevent form submission
-
 				// Get the entered name
 				var name = document.getElementById("textfield").value;
 
 				// Construct the URL with the query string
 				var url = "http://10.217.4.78:8080/set?name=" + encodeURIComponent(name);
+
+				window.alert("Sending name");
 
 				// Send the request to the locally hosted IP
 				var xhr = new XMLHttpRequest();
@@ -24,13 +31,5 @@
 				xhr.send();
 			};
 		</script>
-
-		<div class="wrapper"><p>Welcome to my awesome app!</p>
-			<form id="myForm" onsubmit="return submitName();">
-			<label for="name">Name: </label>
-			<input type="text" id="textfield" name="name" placeholder="Hank">
-			<input type="submit" value="Submit">
-			</form>
-		</div>
 	</body>
 </html>
