@@ -3,7 +3,7 @@
 	<head><link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/app.css') }}"/></head>
 	<body>
 		<div class="wrapper"><p>Welcome to my awesome app!</p>
-			<form id="myForm">
+			<form action="" id="myForm">
 			<label for="name">Name: </label>
 			<input type="text" id="name" name="name" placeholder="Hank">
 			<input type="submit" value="Submit">
@@ -11,8 +11,8 @@
 		</div>
 
 		<script>
-			document.getElementById("myForm").addEventListener("submit", function(event) {
-				event.preventDefault(); // Prevent form submission
+			document.getElementById("myForm").addEventListener("submit", (e) => {
+				e.preventDefault(); // Prevent form submission
 
 				// Get the entered name
 				var name = document.getElementById("name").value;
@@ -23,6 +23,12 @@
 				// Send the request to the locally hosted IP
 				var xhr = new XMLHttpRequest();
 				xhr.open("GET", url, true);
+				xhr.onload = function(e) {
+    				code = xhr.response;
+  				};
+  				xhr.onerror = function () {
+    				console.error("** An error occurred during the XMLHttpRequest");
+  				};
 				xhr.send();
 			});
 		</script>
