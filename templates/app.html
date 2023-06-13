@@ -9,5 +9,22 @@
 			<input type="submit" value="Submit">
 			</form>
 		</div>
+
+		<script>
+			document.getElementById("myForm").addEventListener("submit", function(event) {
+				event.preventDefault(); // Prevent form submission
+
+				// Get the entered name
+				var name = document.getElementById("name").value;
+
+				// Construct the URL with the query string
+				var url = "http://10.217.4.78:8080/set?name=" + encodeURIComponent(name);
+
+				// Send the request to the locally hosted IP
+				var xhr = new XMLHttpRequest();
+				xhr.open("GET", url, true);
+				xhr.send();
+			});
+		</script>
 	</body>
 </html>
