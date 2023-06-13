@@ -16,4 +16,4 @@ EXPOSE 5000
 
 # start gunicorn server (flask)
 RUN pip3 install -r ./requirements.txt
-CMD ["gunicorn", "wsgi:app"]
+CMD ["gunicorn", "app:app"]
