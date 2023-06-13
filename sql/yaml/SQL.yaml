@@ -21,7 +21,7 @@ spec:
        deployment: mysql
    spec:
      containers:
-       - image: quay.io/rh-ee-jbrawley/mysql-demo:0d4a8b8
+       - image: quay.io/rh-ee-jbrawley/mysql-demo:30e6d12
          imagePullPolicy: IfNotPresent
          name: mysql
          env:
