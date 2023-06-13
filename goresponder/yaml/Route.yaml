@@ -1,0 +1,11 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: goresp-route
+spec:
+  host: go-svc-flask-demo.apps-crc.testing
+  port:
+    targetPort: 8080
+  to:
+    kind: Service
+    name: goresp-svc
