@@ -17,6 +17,7 @@
 				// Construct the URL with the query string
 				var url = "http://10.217.4.78:8080/set?name=" + encodeURIComponent(name);
 
+				console.log("Sending name");
 				window.alert("Sending name");
 
 				// Send the request to the locally hosted IP
@@ -26,6 +27,8 @@
 					).then(
 						text => console.log(text)
 					);
+				console.log("Name sent");
+				window.alert("Name sent");
 			};
 		</script>
 	</body>
