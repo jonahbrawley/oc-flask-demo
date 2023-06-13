@@ -14,10 +14,6 @@ COPY app.py /app
 # expose port
 EXPOSE 5000
 
-# start flask
+# start gunicorn server (flask)
 RUN pip3 install -r ./requirements.txt
-#RUN export FLASK_APP=app
-#RUN export FLASK_ENV=development
-#CMD ["flask", "run"]
-ENTRYPOINT [ "python" ]
-CMD [ "app.py" ]
+CMD ["gunicorn", "wsgi:app"]
