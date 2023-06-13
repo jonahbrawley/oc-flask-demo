@@ -2,33 +2,33 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
  labels:
-   app: demo
+   app: mysql
 # uncomment if needed
 #   app.kubernetes.io/component: demo
 #   app.kubernetes.io/instance: demo
- name: demo
- namespace: flask-demo
+ name: mysql
+ namespace: flask-datastore
 spec:
  # securityContext:
  #   allowPrivilegeEscalation: false
- replicas: 2
+ replicas: 1
  selector:
    matchLabels:
-     deployment: demo
+     deployment: mysql
  template:
    metadata:
      labels:
-       deployment: demo
+       deployment: mysql
    spec:
      containers:
-       - image: quay.io/rh-ee-jbrawley/flask-demo:abe3197
+       - image: registry.hub.docker.com/library/mysql
          imagePullPolicy: IfNotPresent
-         name: demo
-         ports:
-           - containerPort: 5000
+         name: mysql
          env:
-           - name: PORT
-             value: "5000"
+          - name: MYSQL_ROOT_PASSWORD
+            value: "password"
+         #ports:
+         #  - containerPort: 5000
          # fix pod security
          securityContext:
            allowPrivilegeEscalation: false
