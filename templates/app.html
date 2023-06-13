@@ -3,19 +3,19 @@
 	<head><link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/app.css') }}"/></head>
 	<body>
 		<div class="wrapper"><p>Welcome to my awesome app!</p>
-			<form action="" id="myForm">
+			<form id="myForm" onsubmit="return submitName();">
 			<label for="name">Name: </label>
-			<input type="text" id="name" name="name" placeholder="Hank">
+			<input type="text" id="textfield" name="name" placeholder="Hank">
 			<input type="submit" value="Submit">
 			</form>
 		</div>
 
 		<script>
-			document.getElementById("myForm").addEventListener("submit", (e) => {
+			function submitName() {
 				e.preventDefault(); // Prevent form submission
 
 				// Get the entered name
-				var name = document.getElementById("name").value;
+				var name = document.getElementById("textfield").value;
 
 				// Construct the URL with the query string
 				var url = "http://10.217.4.78:8080/set?name=" + encodeURIComponent(name);
@@ -30,7 +30,7 @@
     				console.error("** An error occurred during the XMLHttpRequest");
   				};
 				xhr.send();
-			});
+			};
 		</script>
 	</body>
 </html>
