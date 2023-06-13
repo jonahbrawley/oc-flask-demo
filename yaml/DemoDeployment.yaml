@@ -21,11 +21,14 @@ spec:
        deployment: demo
    spec:
      containers:
-       - image: quay.io/rh-ee-jbrawley/flask-demo:8569106
+       - image: quay.io/rh-ee-jbrawley/flask-demo:6bfdef9
          imagePullPolicy: IfNotPresent
          name: demo
          ports:
            - containerPort: 5000
+         env:
+           - name: PORT
+             value: "5000"
          # fix pod security
          securityContext:
            allowPrivilegeEscalation: false

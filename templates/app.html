@@ -15,10 +15,8 @@
 				var name = document.getElementById("textfield").value;
 
 				// Construct the URL with the query string
-				//var url = "http://10.217.4.78:8080/set?name=" + encodeURIComponent(name);
-				var url = "http://10.217.4.78:8080/set?name=dave";
-
-				window.alert("Sending name");
+				var url = "http://10.217.4.78:8080/set?name=" + encodeURIComponent(name);
+				window.alert("Sending name" + url);
 
 				// Send the request to the locally hosted IP
 				fetch(url)
