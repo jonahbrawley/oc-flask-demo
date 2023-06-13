@@ -21,12 +21,16 @@ spec:
        deployment: mysql
    spec:
      containers:
-       - image: quay.io/rh-ee-jbrawley/mysql-demo:ae6ca5a
+       - image: quay.io/rh-ee-jbrawley/mysql-demo:5e46fe8
          imagePullPolicy: IfNotPresent
          name: mysql
          env:
           - name: MYSQL_ROOT_PASSWORD
             value: "password"
+         lifecycle:
+            postStart:
+               exec:
+                  command: ["/bin/sh", "-c", "mysql -uroot -ppassword < \"setup.sql\""]
          #ports:
          #  - containerPort: 5000
          # fix pod security
