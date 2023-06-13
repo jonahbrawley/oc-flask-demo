@@ -21,7 +21,7 @@ spec:
        deployment: mysql
    spec:
      containers:
-       - image: registry.hub.docker.com/library/mysql
+       - image: quay.io/rh-ee-jbrawley/mysql-demo:2260892
          imagePullPolicy: IfNotPresent
          name: mysql
          env:
