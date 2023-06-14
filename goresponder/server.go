@@ -56,7 +56,7 @@ func sendName(w http.ResponseWriter, r *http.Request) {
 	}
 	log.Println("Sending name insert...")
 	log.Println("INSERT INTO names(name) VALUES " + r.URL.Query().Get("name"))
-	rows, err := db.Query("INSERT INTO names(name) VALUES " + r.URL.Query().Get("name"))
+	rows, err := db.Query("INSERT INTO names (name) VALUES ('" + r.URL.Query().Get("name") + "')")
 	if err != nil {
 		log.Fatal(err)
 	}
