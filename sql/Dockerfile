@@ -1,6 +1,6 @@
 FROM registry.hub.docker.com/library/mysql
 WORKDIR /
-COPY setup.sql /
-# setup datamodel
-#CMD ["export", "MYSQL_ROOT_PASSWORD=\"password\""]
-#CMD ["mysql", "-uroot", "-ppassword", "<", "\"setup.sql\""]
+
+# copies setup script
+COPY setup.sql /docker-entrypoint-initdb.d
+EXPOSE 3306
