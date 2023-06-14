@@ -4,7 +4,7 @@ metadata:
   name: goresp-svc
 spec:
   selector:
-    goresponder: "true"
+    deployment: goresponder
   ports:
   - protocol: TCP
     port: 8080
