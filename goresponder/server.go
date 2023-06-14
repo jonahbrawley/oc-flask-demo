@@ -50,7 +50,7 @@ func initApi() *api {
 func sendName(w http.ResponseWriter, r *http.Request) {
 	log.Println("Sending name...")
 	fmt.Println("GET params were:", r.URL.Query())
-	db, err := sql.Open("mysql", "root:password@tcp(mysql-svc.apps-crc.testing:3306)/names")
+	db, err := sql.Open("mysql", "root:password@tcp(10.217.4.44:3306)/names")
 	if err != nil {
 		log.Fatal(err)
 	}
