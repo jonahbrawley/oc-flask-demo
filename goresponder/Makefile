@@ -7,5 +7,5 @@ build:
 
 push:
 	podman push ${REGISTRY}:${GIT_HASH}
-	echo Make sure to append the GIT_HASH to yaml!
+	#echo Make sure to append the GIT_HASH to yaml!
 	#echo $GIT_HASH
