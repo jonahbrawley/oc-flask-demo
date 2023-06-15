@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mysql-configmap
+data:
+  schema.sql: |
+    CREATE DATABASE names;
+    USE names;
+    CREATE TABLE names (
+      name VARCHAR(30)
+    );

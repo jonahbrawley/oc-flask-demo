@@ -50,6 +50,10 @@ func initApi() *api {
 func sendName(w http.ResponseWriter, r *http.Request) {
 	log.Println("Sending name...")
 	fmt.Println("GET params were:", r.URL.Query())
+	// move to main or init
+	// update sendName() to accept existing database handle
+	// are you cleaning up sql properly? or leaving leak
+	// db == handle
 	db, err := sql.Open("mysql", "root:password@tcp(10.217.4.44:3306)/names")
 	if err != nil {
 		log.Fatal(err)

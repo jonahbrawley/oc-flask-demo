@@ -1,0 +1,3 @@
+1. need different db implementation
+2. fix the db handler! take a look at gabi for information https://github.com/app-sre/gabi/blob/main/pkg/cmd/cmd.go
+3. merge request zero reconcile
